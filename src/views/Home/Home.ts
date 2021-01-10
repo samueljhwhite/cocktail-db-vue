@@ -4,10 +4,10 @@ Component({});
 export default class Home extends Vue {
   protected someProperty = {
     key1: "Lalala",
-    key2: 23,
+    key2: 23
   };
 
-  protected someFunction() {
-    alert(this.someProperty.key1);
+  protected someFunction(): void {
+    alert(this.$store.state.count);
   }
 }
