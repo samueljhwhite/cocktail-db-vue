@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <h1>App</h1>
+    <NavigationTop />
     <Drinks />
   </v-app>
 </template>
