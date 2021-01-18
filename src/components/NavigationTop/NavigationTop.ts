@@ -7,9 +7,15 @@ export default class NavigationTop extends Vue {
 
   protected tagsSearch = "";
 
+  protected inputCocktails = '';
+
+  protected inputTags = "";
+
   protected drinks: DrinkData[] = drinks;
 
   protected uniqueTags: string[] = [];
+
+  protected tab = 'drinks';
 
   mounted() {
     this.initialize();
@@ -17,6 +23,7 @@ export default class NavigationTop extends Vue {
 
   protected initialize() {
     this.listUniqueTags();
+    this.setActiveTab();
   }
 
   protected listUniqueTags() {
@@ -25,5 +32,18 @@ export default class NavigationTop extends Vue {
     });
 
     this.uniqueTags = Array.from(new Set(allTags.flat()));
+  }
+
+  protected setActiveTab() {
+    console.log(this.$route.name);
+    this.tab = this.$route.name ? this.$route.name : '';
+  }
+
+  protected goToDrinks() {
+    this.$router.push({ name: 'drinks' });
+  }
+
+  protected goToStatistics() {
+    this.$router.push({ name: 'statistics' });
   }
 }

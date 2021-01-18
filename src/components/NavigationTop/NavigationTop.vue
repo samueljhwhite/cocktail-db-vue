@@ -1,15 +1,14 @@
 <template>
-  <v-toolbar dark style="max-height: 120px;">
+  <v-toolbar dark class="mb-8" style="max-height: 120px;">
     <v-app-bar-nav-icon class="hidden-sm-and-down"></v-app-bar-nav-icon>
     <v-toolbar-title class="mr-6 hidden-sm-and-down font-heading">
       Cocktail DB
     </v-toolbar-title>
     <v-autocomplete
       class="w-1/3 mr-4"
-      v-model="searchInput"
+      v-model="cocktailSearch"
       :items="drinks"
-      :loading="isLoading"
-      :search-input.sync="search"
+      :search-input.sync="inputCocktails"
       clearable
       hide-details
       hide-selected
@@ -52,7 +51,7 @@
       class="w-1/4"
       v-model="tagsSearch"
       :items="uniqueTags"
-      :search-input.sync="search"
+      :search-input.sync="inputTags"
       clearable
       hide-details
       hide-selected
@@ -63,14 +62,14 @@
     <template v-slot:extension>
       <v-tabs
         v-model="tab"
-        :hide-slider="!model"
+        align-with-title
         color="white"
         slider-color="grey"
       >
-        <v-tab>
-          Cocktails
+        <v-tab value='drinks' @click="goToDrinks()">
+          Drinks
         </v-tab>
-        <v-tab :disabled="!model">
+        <v-tab value='statistics' @click="goToStatistics()">
           Statistics
         </v-tab>
       </v-tabs>

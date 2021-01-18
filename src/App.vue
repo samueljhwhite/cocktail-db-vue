@@ -1,7 +1,8 @@
 <template>
   <v-app>
     <NavigationTop />
-    <Drinks />
+    <!-- <Drinks /> -->
+    <router-view />
   </v-app>
 </template>
 
