@@ -6,10 +6,13 @@
       src="https://source.unsplash.com/random/300x100"
     ></v-img>
 
-    <v-card-title class="font-heading"> {{ drink.name }} </v-card-title>
+    <v-card-title class="font-heading flex justify-between">
+      {{ drink.name }}
+      <AddToShoppingList :ingredients="drink.primaryIngredients"/>
+    </v-card-title>
 
     <v-card-text>
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap mb-2">
         <template v-for="(tag, index) in drink.tags">
           <RoundedPill :key="index" :pillText="tag" />
         </template>
@@ -20,9 +23,9 @@
       </div>
     </v-card-text>
 
-    <v-card-actions>
-      <v-btn text @click="addToList()">
-        Add To Shopping List
+    <v-card-actions class="font-heading flex justify-center m-0 p-0">
+      <v-btn text>
+        See Recipe
       </v-btn>
     </v-card-actions>
   </v-card>

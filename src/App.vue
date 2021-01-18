@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <v-app>
     <h1>App</h1>
     <Drinks />
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts" src="./App.ts"></script>
