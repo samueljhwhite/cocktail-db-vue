@@ -5,7 +5,7 @@ const drinks: DrinkData[] = [
     tags: ["Gin"],
     primaryIngredients: ["Gin", "Tonic Water"],
     description:
-      "A highball cocktail made with gin and tonic water, poured over a large amount of ice.",
+      "A highball cocktail made with gin and tonic water, poured over ice.",
     method: [
       "Lorem ipsum chunga bunga, liddi do-da. Horumph, horay",
       "Fugiat adipisicing deserunt quis proident.",
@@ -214,7 +214,7 @@ const drinks: DrinkData[] = [
     tags: ["Gin"],
     primaryIngredients: ["Gin", "Tonic Water"],
     description:
-      "A highball cocktail made with gin and tonic water, poured over a large amount of ice.",
+      "A highball cocktail made with gin and tonic water, poured over ice.",
     method: [
       "Lorem ipsum chunga bunga, liddi do-da. Horumph, horay",
       "Fugiat adipisicing deserunt quis proident.",

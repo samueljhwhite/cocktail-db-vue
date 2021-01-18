@@ -71,13 +71,11 @@
           Cocktails
         </v-tab>
         <v-tab :disabled="!model">
-          Trading
-        </v-tab>
-        <v-tab :disabled="!model">
-          Blog
+          Statistics
         </v-tab>
       </v-tabs>
     </template>
   </v-toolbar>
 </template>
+
 <script lang="ts" src="./NavigationTop.ts"></script>

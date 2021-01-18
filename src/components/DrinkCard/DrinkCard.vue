@@ -6,9 +6,8 @@
       src="https://source.unsplash.com/random/300x100"
     ></v-img>
 
-    <v-card-title class="font-heading flex justify-between">
+    <v-card-title class="font-heading">
       {{ drink.name }}
-      <AddToShoppingList :ingredients="drink.primaryIngredients"/>
     </v-card-title>
 
     <v-card-text>
@@ -23,10 +22,10 @@
       </div>
     </v-card-text>
 
-    <v-card-actions class="font-heading flex justify-center m-0 p-0">
-      <v-btn text>
-        See Recipe
-      </v-btn>
+    <v-card-actions class="font-heading flex justify-around m-0 p-0">
+      <AddToShoppingList :ingredients="drink.primaryIngredients"/>
+      <AddToFavourites :id="drink.id"/>
+      <ViewRecipe :id="drink.id"/>
     </v-card-actions>
   </v-card>
 </template>
