@@ -1,10 +1,11 @@
 <template>
-  <v-toolbar color="orange accent-1" style="max-height: 120px;">
+  <v-toolbar dark style="max-height: 120px;">
     <v-app-bar-nav-icon class="hidden-sm-and-down"></v-app-bar-nav-icon>
     <v-toolbar-title class="mr-6 hidden-sm-and-down font-heading">
       Cocktail DB
     </v-toolbar-title>
     <v-autocomplete
+      class="w-1/3 mr-4"
       v-model="searchInput"
       :items="drinks"
       :loading="isLoading"
@@ -14,10 +15,9 @@
       hide-selected
       item-text="name"
       item-value="id"
-      label="Search for a cocktail"
-      
+      label="Search by name"
+      prepend-icon="mdi-glass-cocktail"
     >
-      
       <!-- <template v-slot:selection="{ attr, on, item, selected }">
         <v-chip
           v-bind="attr"
@@ -48,15 +48,27 @@
         </v-list-item-action>
       </template> -->
     </v-autocomplete>
+    <v-autocomplete
+      class="w-1/4"
+      v-model="tagsSearch"
+      :items="uniqueTags"
+      :search-input.sync="search"
+      clearable
+      hide-details
+      hide-selected
+      label="Search by tags"
+      prepend-icon="mdi-tag"
+    ></v-autocomplete>
+
     <template v-slot:extension>
       <v-tabs
         v-model="tab"
         :hide-slider="!model"
-        color="blue-grey"
-        slider-color="blue-grey"
+        color="white"
+        slider-color="grey"
       >
         <v-tab>
-          News
+          Cocktails
         </v-tab>
         <v-tab :disabled="!model">
           Trading
