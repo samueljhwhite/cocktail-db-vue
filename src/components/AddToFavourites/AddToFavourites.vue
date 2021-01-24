@@ -2,7 +2,7 @@
   <v-tooltip top>
     <template v-slot:activator="{ on, attrs }">
       <v-icon
-        @click="AddToFavourites()"
+        @click="addToFavourites()"
         v-bind="attrs"
         v-on="on"
         >mdi-heart-plus-outline</v-icon

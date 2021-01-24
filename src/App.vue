@@ -3,6 +3,12 @@
     <NavigationTop />
     <!-- <Drinks /> -->
     <router-view />
+    <DefaultSnackbar
+      v-if="snackbar.display"
+      :display="snackbar.display"
+      :displayText="snackbar.displayText"
+      :timeout="snackbar.timeout"
+    />
   </v-app>
 </template>
 

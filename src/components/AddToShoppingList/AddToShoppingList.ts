@@ -5,7 +5,10 @@ export default class DrinkCard extends Vue {
   @Prop({ default: () => [] })
   protected ingredients!: string[];
 
-  protected addToList() {
+  protected addToList(): void {
+    if (!this.ingredients) {
+      return;
+    }
     this.ingredients.forEach((ingredient) => {
       this.$store.commit("addToList", ingredient);
     });
