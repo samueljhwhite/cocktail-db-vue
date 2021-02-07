@@ -1,58 +1,72 @@
 import { Vue, Component } from "vue-property-decorator";
-import axios, { AxiosResponse } from 'axios';
+import axios from "axios";
+import Drink from "@/models/Drink.ts";
+import Tag from "@/models/Tag.ts";
+import Ingredient from "@/models/Ingredient.ts";
 // import DrinkCard from "@/components/DrinkCard/DrinkCard.vue";
 // import { drinks, DrinkData } from "@/support/drinks.ts";
 
 @Component({})
 export default class Statistics extends Vue {
-  protected drinks: AxiosResponse | null = null;
+  protected isLoading = true;
 
-  protected tags: AxiosResponse | null = null;
+  protected drinks: Drink[] | null = null;
 
-  protected ingredients: AxiosResponse | null = null;
+  protected tags: Tag[] | null = null;
+
+  protected ingredients: Ingredient[] | null = null;
+
+  protected testQuery: Drink[] | null = null;
 
   mounted() {
     this.initialize();
   }
 
-  protected initialize() {
-    this.getIngredients();
-    this.getDrinks();
-    this.getTags();
-    this.testDrinks();
+  protected async initialize() {
+    const promises = [
+      this.getDrinks(),
+      this.getTags(),
+      this.getIngredients(),
+      this.testDrinks(),
+    ];
+
+    const results = await Promise.all(promises);
+
+    this.drinks = results[0];
+    this.tags = results[1];
+    this.ingredients = results[2];
+    this.testQuery = results[3];
+
+    this.isLoading = false;
   }
 
   protected async getDrinks() {
-    const drinks = await axios.get('http://localhost:1337/drinks');
-    if (!drinks) {
-      return;
+    const drinks = await new Drink().getAll();
+    if (drinks) {
+      return drinks;
     }
-    console.log(drinks);
-    this.drinks = drinks.data;
-  }
-
-  protected async testDrinks() {
-    const drinks = await axios.get('http://localhost:1337/drinks?ingredients.name=Rum');
-    if (!drinks) {
-      return;
-    }
-    console.log('testDrinks ', drinks);
   }
 
   protected async getTags() {
-    const tags = await axios.get('http://localhost:1337/tags');
-    if (!tags) {
-      return;
+    const tags = await new Tag().getAll();
+    if (tags) {
+      return tags;
     }
-    this.tags = tags.data;
+  }
+  
+  protected async getIngredients() {
+    const ingredients = await new Ingredient().getAll();
+    if (ingredients) {
+      return ingredients;
+    }
   }
 
-  protected async getIngredients() {
-    const ingredients = await axios.get('http://localhost:1337/ingredients');
-    if (!ingredients) {
-      return;
+  protected async testDrinks() {
+    const drinks = await axios.get(
+      "http://localhost:1337/drinks?ingredients.name=Rum"
+    );
+    if (drinks) {
+      return drinks;
     }
-    this.ingredients = ingredients.data;
   }
 }
-
