@@ -1,4 +1,6 @@
 import Model from "@/models/Model.ts";
+import Tag from '@/models/Tag.ts';
+import Ingredient from '@/models/Ingredient.ts';
 
 export default class Drink extends Model {
   public name!: string;
@@ -9,9 +11,9 @@ export default class Drink extends Model {
 
   public method!: string;
 
-  public tags!: string[];
+  public tags!: Tag[];
 
-  public ingredients!: string[];
+  public ingredients!: Ingredient[];
 
   public created_at!: string;
 

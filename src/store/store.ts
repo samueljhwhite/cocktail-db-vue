@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     count: 0,
     list: Array<ShoppingListItem>(),
+    snackbar: null,
   },
 
   mutations: {
@@ -24,6 +25,12 @@ export default new Vuex.Store({
         state.list.splice(index, 1);
       }
     },
+    SNACKBAR_OPEN: (state: any, text: string) => {
+      state.snackbar = text;
+    },
+    SNACKBAR_CLOSE: (state: any) => {
+      state.snackbar = null;
+    },
   },
 
   actions: {
@@ -35,6 +42,12 @@ export default new Vuex.Store({
     },
     removeFromList: (context, shoppingListItem: ShoppingListItem) => {
       context.commit("removeFromList", shoppingListItem);
+    },
+    openSnackbar: (context: any, text: string) => {
+      context.commit("SNACKBAR_OPEN", text);
+    },
+    closeSnackbar: (context: any, text = null) => {
+      context.commit("SNACKBAR_CLOSE", text);
     },
   },
 });

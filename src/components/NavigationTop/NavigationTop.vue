@@ -47,11 +47,27 @@
         </v-list-item-action>
       </template> -->
     </v-autocomplete>
+
+    <v-autocomplete
+      class="w-1/3 mr-4"
+      v-model="ingredientSearch"
+      :items="ingredients"
+      :search-input.sync="inputIngredients"
+      clearable
+      hide-details
+      hide-selected
+      item-text="name"
+      item-value="id"
+      label="Search by alcohol"
+      prepend-icon="mdi-bottle-soda-outline"
+    ></v-autocomplete>
+
     <v-autocomplete
       class="w-1/4"
       v-model="tagsSearch"
-      :items="uniqueTags"
+      :items="tags"
       :search-input.sync="inputTags"
+      item-text="name"
       clearable
       hide-details
       hide-selected

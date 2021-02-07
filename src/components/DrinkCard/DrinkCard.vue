@@ -12,8 +12,11 @@
 
     <v-card-text>
       <div class="flex flex-wrap mb-2">
+        <template v-for="(ingredient, index) in drink.ingredients">
+          <RoundedPill :key="index" :pillText="ingredient.name" />
+        </template>
         <template v-for="(tag, index) in drink.tags">
-          <RoundedPill :key="index" :pillText="tag" />
+          <RoundedPill :key="index" :pillText="tag.name" />
         </template>
       </div>
 
@@ -23,9 +26,9 @@
     </v-card-text>
 
     <v-card-actions class="font-heading flex justify-around m-0 p-0">
-      <AddToShoppingList :ingredients="drink.primaryIngredients"/>
-      <AddToFavourites :id="drink.id"/>
-      <ViewRecipe :id="drink.id"/>
+      <AddToShoppingList :ingredients="drink.ingredients" />
+      <AddToFavourites :id="drink.id" :name="drink.name" />
+      <ViewRecipe :id="drink.id" />
     </v-card-actions>
   </v-card>
 </template>

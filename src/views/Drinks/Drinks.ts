@@ -1,6 +1,7 @@
 import { Vue, Component } from "vue-property-decorator";
+import Drink from "@/models/Drink.ts";
+
 import DrinkCard from "@/components/DrinkCard/DrinkCard.vue";
-import { drinks, DrinkData } from "@/support/drinks.ts";
 
 @Component({
   components: {
@@ -8,9 +9,18 @@ import { drinks, DrinkData } from "@/support/drinks.ts";
   },
 })
 export default class Drinks extends Vue {
-  protected drinksArray: DrinkData[] = drinks;
+  protected drinksArray: Drink[] | null = null;
 
-  protected addToList() {
-    console.log("Function!");
+  mounted() {
+    this.initialize();
+  }
+
+  protected initialize() {
+    this.getDrinks();
+  }
+
+  protected async getDrinks() {
+    const drinks = await new Drink().getAll();
+    this.drinksArray = drinks;
   }
 }

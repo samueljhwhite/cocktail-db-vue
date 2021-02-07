@@ -3,6 +3,7 @@ import DefaultSnackbar from '@/components/DefaultSnackbar/DefaultSnackbar.vue';
 import NavigationTop from "@/components/NavigationTop/NavigationTop.vue";
 import Drinks from "@/views/Drinks/Drinks.vue";
 
+
 @Component({
   components: {
     DefaultSnackbar,
@@ -11,9 +12,11 @@ import Drinks from "@/views/Drinks/Drinks.vue";
   },
 })
 export default class App extends Vue {
-  protected snackbar = {
-    display: true,
-    displayText: '',
-    timeout: 1700,
+  protected get isDisplayingSnackbar(): boolean {
+    return !!this.$store.state.snackbar;
+  }
+
+  protected get snackbarDisplayText(): string {
+    return this.$store.state.snackbar;
   }
 }

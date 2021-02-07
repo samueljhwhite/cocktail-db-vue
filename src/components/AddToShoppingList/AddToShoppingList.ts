@@ -6,13 +6,18 @@ export default class DrinkCard extends Vue {
   protected ingredients!: string[];
 
   protected addToList(): void {
-    if (!this.ingredients) {
-      return;
-    }
-    this.ingredients.forEach((ingredient) => {
-      this.$store.commit("addToList", ingredient);
-    });
+    // if (!this.ingredients) {
+    //   return;
+    // }
+    // this.ingredients.forEach((ingredient) => {
+    //   this.$store.commit("addToList", ingredient);
+    // });
 
-    console.log(this.$store.state.list);
+    // console.log(this.$store.state.list);
+    this.testSnackbar();
+  }
+
+  protected testSnackbar() {
+    this.$store.dispatch('openSnackbar', `Ingredients added to shopping list.`);
   }
 }

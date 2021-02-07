@@ -3,8 +3,6 @@ import axios from "axios";
 import Drink from "@/models/Drink.ts";
 import Tag from "@/models/Tag.ts";
 import Ingredient from "@/models/Ingredient.ts";
-// import DrinkCard from "@/components/DrinkCard/DrinkCard.vue";
-// import { drinks, DrinkData } from "@/support/drinks.ts";
 
 @Component({})
 export default class Statistics extends Vue {
@@ -53,7 +51,7 @@ export default class Statistics extends Vue {
       return tags;
     }
   }
-  
+
   protected async getIngredients() {
     const ingredients = await new Ingredient().getAll();
     if (ingredients) {

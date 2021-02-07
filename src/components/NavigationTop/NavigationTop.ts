@@ -1,5 +1,7 @@
 import { Vue, Component } from "vue-property-decorator";
-import { drinks, DrinkData } from "@/support/drinks.ts";
+import Drink from "@/models/Drink.ts";
+import Tag from "@/models/Tag.ts";
+import Ingredient from "@/models/Ingredient.ts";
 
 @Component({})
 export default class NavigationTop extends Vue {
@@ -7,43 +9,64 @@ export default class NavigationTop extends Vue {
 
   protected tagsSearch = "";
 
-  protected inputCocktails = '';
+  protected ingredientSearch = "";
+
+  protected inputCocktails = "";
+
+  protected inputIngredients = "";
 
   protected inputTags = "";
 
-  protected drinks: DrinkData[] = drinks;
+  protected drinks: Drink[] = [];
 
-  protected uniqueTags: string[] = [];
+  protected tags: Tag[] = [];
 
-  protected tab = 'drinks';
+  protected ingredients: Ingredient[] = [];
+
+  protected tab = "drinks";
 
   mounted() {
     this.initialize();
   }
 
   protected initialize() {
-    this.listUniqueTags();
+    this.getTags();
+    this.getIngredients();
+    this.getDrinks();
     this.setActiveTab();
   }
 
-  protected listUniqueTags() {
-    const allTags = this.drinks.map((drink: DrinkData) => {
-      return drink.tags.map((tag: string) => tag);
-    });
+  protected async getTags() {
+    const tags = await new Tag().getAll();
+    if (tags) {
+      this.tags = tags;
+    }
+  }
 
-    this.uniqueTags = Array.from(new Set(allTags.flat()));
+  protected async getIngredients() {
+    const ingredients = await new Ingredient().getAll();
+    if (ingredients) {
+      this.ingredients = ingredients;
+    }
+  }
+
+  protected async getDrinks() {
+    const drinks = await new Drink().getAll();
+    if (drinks) {
+      this.drinks = drinks;
+    }
   }
 
   protected setActiveTab() {
     console.log(this.$route.name);
-    this.tab = this.$route.name ? this.$route.name : '';
+    this.tab = this.$route.name ? this.$route.name : "";
   }
 
   protected goToDrinks() {
-    this.$router.push({ name: 'drinks' });
+    this.$router.push({ name: "drinks" });
   }
 
   protected goToStatistics() {
-    this.$router.push({ name: 'statistics' });
+    this.$router.push({ name: "statistics" });
   }
 }

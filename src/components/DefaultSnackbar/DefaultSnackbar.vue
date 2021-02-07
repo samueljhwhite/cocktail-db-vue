@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-snackbar v-model="internalValue" :timeout="timeout">
+    <v-snackbar v-model="internalValue" >
       {{ displayText }}
 
       <template v-slot:action="{ attrs }">
