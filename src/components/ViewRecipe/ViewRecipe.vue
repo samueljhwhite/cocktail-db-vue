@@ -1,7 +1,7 @@
 <template>
   <v-tooltip top>
     <template v-slot:activator="{ on, attrs }">
-      <v-icon @click="pushToRouter()" v-bind="attrs" v-on="on"
+      <v-icon @click="viewDrinkDetails()" v-bind="attrs" v-on="on"
         >mdi-book-open-outline</v-icon
       >
     </template>

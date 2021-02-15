@@ -13,10 +13,10 @@
     <v-card-text>
       <div class="flex flex-wrap mb-2">
         <template v-for="(ingredient, index) in drink.ingredients">
-          <RoundedPill :key="index" :pillText="ingredient.name" />
+          <RoundedPill :key="`ingredient-${index}`" :pillText="ingredient.name" />
         </template>
         <template v-for="(tag, index) in drink.tags">
-          <RoundedPill :key="index" :pillText="tag.name" />
+          <RoundedPill :key="`tag-${index}`" :pillText="tag.name" />
         </template>
       </div>
 

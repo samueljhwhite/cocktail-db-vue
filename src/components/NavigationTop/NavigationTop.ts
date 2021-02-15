@@ -1,9 +1,22 @@
 import { Vue, Component } from "vue-property-decorator";
+// Components
+import DrinksAutocomplete from "@/components/Autocompletes/DrinksAutocomplete/DrinksAutocomplete.vue";
+import IngredientsAutocomplete from "@/components/Autocompletes/IngredientsAutocomplete/IngredientsAutocomplete.vue";
+import TagsAutocomplete from "@/components/Autocompletes/TagsAutocomplete/TagsAutocomplete.vue";
+import AllAutocomplete from "@/components/Autocompletes/AllAutocomplete/AllAutocomplete.vue";
+// Models
 import Drink from "@/models/Drink.ts";
 import Tag from "@/models/Tag.ts";
 import Ingredient from "@/models/Ingredient.ts";
 
-@Component({})
+@Component({
+  components: {
+    DrinksAutocomplete,
+    IngredientsAutocomplete,
+    TagsAutocomplete,
+    AllAutocomplete,
+  }
+})
 export default class NavigationTop extends Vue {
   protected cocktailSearch = "";
 

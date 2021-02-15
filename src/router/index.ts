@@ -36,7 +36,7 @@ const routes: Array<RouteConfig> = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "statistics" */ "@/views/Statistics/Statistics.vue")
-  }
+  },
 ];
 
 const router = new VueRouter({

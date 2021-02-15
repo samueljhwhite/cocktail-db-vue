@@ -1,12 +1,20 @@
 <template>
   <v-app>
-    <NavigationTop />
-    <DefaultSnackbar
-      v-if="isDisplayingSnackbar"
-      :display="isDisplayingSnackbar"
-      :displayText="snackbarDisplayText"
+    <div class="bg-gray-100 min-h-screen">
+      <NavigationTop />
+      <DefaultSnackbar
+        v-if="isDisplayingSnackbar"
+        :display="isDisplayingSnackbar"
+        :displayText="snackbarDisplayText"
+      />
+      <router-view />
+    </div>
+    <Footer />
+    <DrinkDetailDialog
+      v-if="isDisplayingDetailsDialog"
+      :display="isDisplayingDetailsDialog"
+      :drinkID="detailsDialogID"
     />
-    <router-view />
   </v-app>
 </template>
 

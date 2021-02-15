@@ -1,6 +1,6 @@
 import Model from "@/models/Model.ts";
-import Tag from '@/models/Tag.ts';
-import Ingredient from '@/models/Ingredient.ts';
+import Tag from "@/models/Tag.ts";
+import Ingredient from "@/models/Ingredient.ts";
 
 export default class Drink extends Model {
   public name!: string;
@@ -23,5 +23,9 @@ export default class Drink extends Model {
 
   public getAll() {
     return this.getEndpoint(this.endpoint);
+  }
+
+  public get(id: number) {
+    return this.getByID(this.endpoint, id);
   }
 }
