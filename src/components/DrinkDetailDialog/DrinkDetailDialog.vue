@@ -13,6 +13,7 @@
           color="#292929"
           dark
           prominent
+          shrink-on-scroll
           src="https://picsum.photos/1920/1080?random"
           fade-img-on-scroll
           scroll-target="#dialog-content"
@@ -28,9 +29,9 @@
             <v-icon>mdi-close</v-icon>
           </v-app-bar-nav-icon>
 
-          <v-card-title class="font-heading mt-8">{{
-            drink.name
-          }}</v-card-title>
+          <v-card-title class="font-heading -mt-2"
+            ><h1>{{ drink.name }}</h1></v-card-title
+          >
 
           <v-spacer></v-spacer>
 
@@ -42,34 +43,20 @@
           </v-btn>
 
           <template v-slot:extension>
-            <v-tabs align-with-title>
-              <v-tab>Method</v-tab>
-              <v-tab>Variations</v-tab>
-              <v-tab>Media</v-tab>
+            <v-tabs v-model="tab" align-with-title>
+              <v-tab v-for="tab in tabItems" :key="tab"> {{ tab }} </v-tab>
             </v-tabs>
           </template>
         </v-app-bar>
 
-        <v-sheet id="dialog-content" class="overflow-y-auto" max-height="90vh">
-          <v-container class="mt-72" style="min-height: 50vh;">
-            <div class="xl:flex xl:justify-around">
-              <div class="max-w-prose">
-                <v-card-title class="font-heading">Description</v-card-title>
-                <v-card-text class="font-body">
-                  <p>{{ drink.description }}</p>
-                </v-card-text>
-              </div>
-              <div class="max-w-prose">
-                <v-card-title class="font-heading">Method</v-card-title>
-                <v-card-text class="font-body">
-                  <p>{{ drink.method }}</p>
-                </v-card-text>
-              </div>
-            </div>
-          </v-container>
+        <v-sheet id="dialog-content" class="overflow-y-auto" max-height="85vh">
+          <Method v-if="activeTab === 0" :drink="drink" />
+          <Variations v-if="activeTab === 1" :drink="drink" />
+          <Media v-if="activeTab === 2" :drink="drink" />
         </v-sheet>
       </v-card>
     </v-dialog>
   </v-row>
 </template>
+
 <script lang="ts" src="./DrinkDetailDialog.ts"></script>

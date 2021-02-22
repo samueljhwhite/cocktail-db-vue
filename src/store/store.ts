@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import Drink from "@/models/Drink.ts";
 
 Vue.use(Vuex);
 
@@ -7,6 +8,7 @@ export default new Vuex.Store({
   state: {
     snackbar: null,
     drinkDetailDialog: null,
+    queryResults: [],
   },
 
   mutations: {
@@ -22,6 +24,9 @@ export default new Vuex.Store({
     DRINK_DIALOG_CLOSE: (state: any) => {
       state.drinkDetailDialog = null;
     },
+    QUERY_RESULTS_COMMIT: (state: any, drinks: Drink[]) => {
+      state.queryResults = drinks;
+    },
   },
 
   actions: {
@@ -36,6 +41,9 @@ export default new Vuex.Store({
     },
     closeDrinkDialog: (context: any, id = null) => {
       context.commit("DRINK_DIALOG_CLOSE", id);
+    },
+    commitQueryResults: (context: any, drinks: Drink[]) => {
+      context.commit("QUERY_RESULTS_COMMIT", drinks);
     },
   },
 });

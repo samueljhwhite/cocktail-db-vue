@@ -4,12 +4,18 @@ import Drink from "@/models/Drink.ts";
 import RoundedPill from "@/components/RoundedPill/RoundedPill.vue";
 import AddToShoppingList from "@/components/AddToShoppingList/AddToShoppingList.vue";
 import AddToFavourites from "@/components/AddToFavourites/AddToFavourites.vue";
+import Method from "@/components/DrinkDetailDialog/Method/Method.vue";
+import Variations from "@/components/DrinkDetailDialog/Variations/Variations.vue";
+import Media from "@/components/DrinkDetailDialog/Media/Media.vue";
 
 @Component({
   components: {
     RoundedPill,
     AddToShoppingList,
     AddToFavourites,
+    Method,
+    Variations,
+    Media,
   },
 })
 export default class DrinkDetailDialog extends Vue {
@@ -22,6 +28,10 @@ export default class DrinkDetailDialog extends Vue {
   protected isLoading = true;
 
   protected drink: Drink | null = null;
+
+  protected tabItems = ['method', 'variations', 'media'];
+  
+  protected tab = 0;
 
   mounted() {
     this.initialize();
@@ -42,5 +52,9 @@ export default class DrinkDetailDialog extends Vue {
   protected closeDialog() {
     this.$store.dispatch("closeDrinkDialog");
     this.$router.push({ name: "drinks" });
+  }
+
+  protected get activeTab() {
+    return this.tab;
   }
 }

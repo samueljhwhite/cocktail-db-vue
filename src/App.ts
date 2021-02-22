@@ -1,9 +1,13 @@
 import { Vue, Component } from "vue-property-decorator";
-import DefaultSnackbar from "@/components/DefaultSnackbar/DefaultSnackbar.vue";
+// Models
+import Drink from "@/models/Drink.ts";
+// Components
 import NavigationTop from "@/components/NavigationTop/NavigationTop.vue";
 import Footer from "@/components/Footer/Footer.vue";
-import Drinks from "@/views/Drinks/Drinks.vue";
+import DefaultSnackbar from "@/components/DefaultSnackbar/DefaultSnackbar.vue";
 import DrinkDetailDialog from "@/components/DrinkDetailDialog/DrinkDetailDialog.vue";
+// Views
+import Drinks from "@/views/Drinks/Drinks.vue";
 
 @Component({
   components: {
@@ -15,7 +19,26 @@ import DrinkDetailDialog from "@/components/DrinkDetailDialog/DrinkDetailDialog.
   },
 })
 export default class App extends Vue {
-  // Dispatch component Getters
+  // #region Lifecycle & Init
+  mounted() {
+    this.initialize();
+  }
+
+  protected initialize() {
+    this.getDrinks();
+  }
+  // #endregion
+
+  // #region Async Functions
+  protected async getDrinks() {
+    const drinks = await new Drink().getAll();
+    if (drinks) {
+      this.$store.dispatch("commitQueryResults", drinks);
+    }
+  }
+  // #endregion
+
+  // #region Getters
   protected get isDisplayingSnackbar(): boolean {
     return !!this.$store.state.snackbar;
   }
@@ -31,4 +54,5 @@ export default class App extends Vue {
   protected get detailsDialogID(): string {
     return this.$store.state.drinkDetailDialog;
   }
+  // #endregion
 }

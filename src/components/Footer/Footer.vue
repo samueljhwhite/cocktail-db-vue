@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-theme-blue-dark mt-16" style="min-height: 300px;">
+    <div class="w-full bg-theme-black pt-16" style="min-height: 300px;">
 
     </div>
 </template>

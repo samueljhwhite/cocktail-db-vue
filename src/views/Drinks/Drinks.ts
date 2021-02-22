@@ -4,21 +4,13 @@ import Drink from "@/models/Drink.ts";
 import { Route } from "vue-router";
 // Components
 import DrinkCard from "@/components/DrinkCard/DrinkCard.vue";
-import DrinksAutocomplete from "@/components/Autocompletes/DrinksAutocomplete/DrinksAutocomplete.vue";
-import IngredientsAutocomplete from "@/components/Autocompletes/IngredientsAutocomplete/IngredientsAutocomplete.vue";
-import TagsAutocomplete from "@/components/Autocompletes/TagsAutocomplete/TagsAutocomplete.vue";
 
 @Component({
   components: {
-    DrinkCard,
-    DrinksAutocomplete,
-    IngredientsAutocomplete,
-    TagsAutocomplete,
-  },
+    DrinkCard
+  }
 })
 export default class Drinks extends Vue {
-  protected drinksArray: Drink[] = [];
-
   protected isDetailsView = false;
 
   protected drinkDetailID: number | null = null;
@@ -41,7 +33,7 @@ export default class Drinks extends Vue {
     if (!drinks) {
       return;
     }
-    this.drinksArray = drinks;
+    this.$store.dispatch("commitQueryResults", drinks);
   }
 
   protected resolveViewType() {
@@ -63,5 +55,9 @@ export default class Drinks extends Vue {
       this.isDetailsView = true;
       this.dispatchDetailsDialog();
     }
+  }
+
+  protected get drinksList(): Drink[] {
+    return this.$store.state.queryResults;
   }
 }

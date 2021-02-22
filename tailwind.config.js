@@ -16,7 +16,7 @@ module.exports = {
             lightest: "#4DA8DA",
           },
           white: "#EEFBFB",
-          black: "#202020",
+          black: "#242424",
         },
       },
     },

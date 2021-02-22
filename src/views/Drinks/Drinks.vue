@@ -1,21 +1,11 @@
 <template>
-  <div>
-    <!-- Filters: Moved to header -->
-    <!-- <div class="flex w-full justify-center">
-      <div
-        class="w-11/12 xl:flex p-4 pb-6 pt-0 mb-4 m-1 v-card v-sheet bg-theme-white"
-      >
-        <DrinksAutocomplete class="w-full" />
-        <div class="md:flex">
-          <IngredientsAutocomplete class="w-full md:w-1/2" />
-          <TagsAutocomplete class="w-full md:w-1/2" />
-        </div>
-      </div>
-    </div> -->
-    <!-- Cards -->
-    <div class="flex flex-wrap justify-center mb-8">
+  <div class="w-full flex justify-center">
+    <div
+      class="flex justify-center flex-wrap mt-16 mb-32 w-11/12"
+      style="max-width: 1800px;"
+    >
       <DrinkCard
-        v-for="(drink, index) in drinksArray"
+        v-for="(drink, index) in drinksList"
         :key="`drink-card-${index}`"
         :drink="drink"
       />

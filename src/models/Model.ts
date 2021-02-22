@@ -3,7 +3,9 @@ import axios from "axios";
 export default class Model {
   public id!: number;
 
-  private host: string = "http://localhost:1337";
+  protected host: string = "http://localhost:1337";
+
+  public type!: string;
 
   public created_at!: string;
 
@@ -24,6 +26,14 @@ export default class Model {
       return {
         error: "Cannot find by ID",
       };
+    }
+    return result.data;
+  }
+
+  public async queryByName(endpoint: string, queryText: string) {
+    const result = await axios.get(`${this.host}${endpoint}?name_contains=${queryText}`)
+    if (!result) {
+      return;
     }
     return result.data;
   }
