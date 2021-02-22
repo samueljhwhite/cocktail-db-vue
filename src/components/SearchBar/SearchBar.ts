@@ -54,8 +54,8 @@ export default class SearchBar extends Vue {
 
   // #region Watchers
   @Watch("selected")
-  protected onSelectedChange(value: string | null, oldValue: string | null) {
-    if (this.selected === oldValue) {
+  protected onSelectedChange(value: string | null, newValue: string | null) {
+    if (this.selected === newValue) {
       return;
     }
     this.handleSelected(this.selected);

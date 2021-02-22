@@ -6,7 +6,7 @@
       </div>
     </div>
     <div style="max-width: 240px">
-      <SearchBar />
+      <SearchBar :dark="true" />
     </div>
   </div>
 </template>

@@ -2,10 +2,9 @@
   <v-autocomplete
     class="w-full"
     clearable
-    dark
     hide-details
     item-text="name"
-    label="Search by name"
+    label="Search drinks, ingredients, and tags"
     prepend-icon="mdi-magnify"
     return-object
     no-data-text="Search cocktails, liquor, and tags!"
