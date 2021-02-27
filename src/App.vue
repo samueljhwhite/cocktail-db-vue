@@ -15,6 +15,7 @@
       :display="isDisplayingDetailsDialog"
       :drinkID="detailsDialogID"
     />
+    <SignUpDialog v-if="isDisplayingSignUpDialog" :display="isDisplayingSignUpDialog" />
   </v-app>
 </template>
 

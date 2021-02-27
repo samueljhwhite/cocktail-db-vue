@@ -4,6 +4,7 @@ import NavigationTop from "@/components/NavigationTop/NavigationTop.vue";
 import Footer from "@/components/Footer/Footer.vue";
 import DefaultSnackbar from "@/components/DefaultSnackbar/DefaultSnackbar.vue";
 import DrinkDetailDialog from "@/components/DrinkDetailDialog/DrinkDetailDialog.vue";
+import SignUpDialog from "@/components/SignUpDialog/SignUpDialog.vue";
 // Views
 import Drinks from "@/views/Drinks/Drinks.vue";
 
@@ -11,6 +12,7 @@ import Drinks from "@/views/Drinks/Drinks.vue";
   components: {
     DefaultSnackbar,
     DrinkDetailDialog,
+    SignUpDialog,
     NavigationTop,
     Drinks,
     Footer,
@@ -32,6 +34,10 @@ export default class App extends Vue {
 
   protected get detailsDialogID(): string {
     return this.$store.state.drinkDetailDialog;
+  }
+
+  protected get isDisplayingSignUpDialog(): boolean {
+    return !!this.$store.state.signUpDialog;
   }
   // #endregion
 }

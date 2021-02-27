@@ -5,7 +5,10 @@
       style="max-width: 1800px;"
     >
       <div class="w-full flex justify-center">
-        <div class="w-1/2 mb-8">
+        <div
+          class="w-1/2 mb-8 bg-white px-9 rounded-full placeholder-font-body font-body list-font"
+          style="box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)"
+        >
           <SearchBar @fetchDrinks="fetchingDrinks()" />
         </div>
       </div>
@@ -37,3 +40,7 @@
 </template>
 
 <script lang="ts" src="./Drinks.ts"></script>
+
+<style>
+
+</style>

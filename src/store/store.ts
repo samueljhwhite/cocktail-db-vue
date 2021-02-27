@@ -6,9 +6,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    queryResults: [],
     snackbar: null,
     drinkDetailDialog: null,
-    queryResults: [],
+    signUpDialog: false,
   },
 
   mutations: {
@@ -27,6 +28,12 @@ export default new Vuex.Store({
     QUERY_RESULTS_COMMIT: (state: any, drinks: Drink[]) => {
       state.queryResults = drinks;
     },
+    SIGN_UP_DIALOG_OPEN: (state: any) => {
+      state.signUpDialog = true;
+    },
+    SIGN_UP_DIALOG_CLOSE: (state: any) => {
+      state.signUpDialog = false;
+    }
   },
 
   actions: {
@@ -44,6 +51,12 @@ export default new Vuex.Store({
     },
     commitQueryResults: (context: any, drinks: Drink[]) => {
       context.commit("QUERY_RESULTS_COMMIT", drinks);
+    },
+    openSignUpDialog: (context: any) => {
+      context.commit("SIGN_UP_DIALOG_OPEN");
+    },
+    closeSignUpDialog: (context: any) => {
+      context.commit("SIGN_UP_DIALOG_CLOSE");
     },
   },
 });
