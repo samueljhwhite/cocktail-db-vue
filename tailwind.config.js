@@ -11,12 +11,16 @@ module.exports = {
         theme: {
           blue: {
             darkest: "#12232E",
-            dark: "#203647",
+            dark: "#16171B",
             light: "#007CC7",
             lightest: "#4DA8DA",
           },
-          white: "#EEFBFB",
-          black: "#242424",
+          white: "#D0D0D0",
+          black: {
+            dark: "#111111",
+            light: "#333",
+          },
+          gray: "#7E7E7E",
         },
       },
     },

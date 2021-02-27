@@ -5,7 +5,7 @@
     hide-details
     item-text="name"
     label="Search drinks, ingredients, and tags"
-    prepend-icon="mdi-magnify"
+    prepend-inner-icon="mdi-magnify"
     return-object
     no-data-text="Search cocktails, liquor, and tags!"
     v-model="selected"

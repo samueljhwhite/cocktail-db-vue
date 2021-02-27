@@ -27,8 +27,11 @@ export default class SearchBar extends Vue {
   }
 
   protected async handleSelected(selection: Drink | Ingredient | Tag | null) {
+    this.$emit('fetchDrinks');
+    
     if (selection === null) {
       // TODO: Need default response endpoint.
+      console.log('Need default response endpoint. searchbar.ts')
       const resetResults = await new Drink().getAll();
       this.$store.dispatch("commitQueryResults", resetResults);
     }

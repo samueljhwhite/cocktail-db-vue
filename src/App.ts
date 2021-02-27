@@ -1,6 +1,4 @@
 import { Vue, Component } from "vue-property-decorator";
-// Models
-import Drink from "@/models/Drink.ts";
 // Components
 import NavigationTop from "@/components/NavigationTop/NavigationTop.vue";
 import Footer from "@/components/Footer/Footer.vue";
@@ -19,25 +17,6 @@ import Drinks from "@/views/Drinks/Drinks.vue";
   },
 })
 export default class App extends Vue {
-  // #region Lifecycle & Init
-  mounted() {
-    this.initialize();
-  }
-
-  protected initialize() {
-    this.getDrinks();
-  }
-  // #endregion
-
-  // #region Async Functions
-  protected async getDrinks() {
-    const drinks = await new Drink().getAll();
-    if (drinks) {
-      this.$store.dispatch("commitQueryResults", drinks);
-    }
-  }
-  // #endregion
-
   // #region Getters
   protected get isDisplayingSnackbar(): boolean {
     return !!this.$store.state.snackbar;
