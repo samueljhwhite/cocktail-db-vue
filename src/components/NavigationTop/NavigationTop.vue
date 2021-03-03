@@ -6,7 +6,7 @@
       </div>
         <div>
           <!-- Need hamburger for mobile -->
-          <button class="px-4 py-2 border border-solid border-theme-blue-cta font-heading uppercase text-white mr-4 text-xs">Log In</button>
+          <button class="px-4 py-2 border border-solid border-theme-white font-heading uppercase text-white mr-4 text-xs">Log In</button>
           <SignUpButton />
         </div>
     </div>
